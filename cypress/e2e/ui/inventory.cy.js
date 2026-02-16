@@ -5,7 +5,6 @@ const inventory = new InventoryAction()
 describe("Fluxo de Carrinho", () => {
 
   beforeEach(() => {
-    // Uso do Custom Command simplificando o setup
     cy.login("standard_user", "secret_sauce")
     inventory.validarHome()
   })
@@ -21,11 +20,9 @@ describe("Fluxo de Carrinho", () => {
 
     inventory.adicionarProduto()
     
-    // Logout via UI
     cy.get('#react-burger-menu-btn').click()
     cy.get('#logout_sidebar_link').click()
     
-    // Login novamente usando o command para validar persistência
     cy.login("standard_user", "secret_sauce")
     
     cy.get('.shopping_cart_badge').should('have.text', '1')

@@ -5,7 +5,7 @@ export class UserFactory {
     return {
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
-      zipCode: faker.location.zipCode('#####') // Gera um CEP de 5 dígitos
+      zipCode: faker.location.zipCode('#####')
     }
   }
 }

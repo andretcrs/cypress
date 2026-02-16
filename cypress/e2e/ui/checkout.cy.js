@@ -10,7 +10,6 @@ describe("Fluxo de compra", () => {
   const checkout = new CheckoutAction()
 
   beforeEach(() => {
-    // Utilizando o Custom Command global
     cy.login("standard_user", "secret_sauce")
     inventory.validarHome()
   })

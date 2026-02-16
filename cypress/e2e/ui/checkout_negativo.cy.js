@@ -8,7 +8,6 @@ const inventory = new InventoryAction()
 
 describe("Fluxo de Checkout - Negativo", () => {
   beforeEach(() => {
-    // Substituído por Custom Command
     cy.login("standard_user", "secret_sauce")
     
     inventory.adicionarProduto()

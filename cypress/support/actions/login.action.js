@@ -8,7 +8,6 @@ export class LoginAction {
 
   logar(usuario, senha) {
 
-    // Só digita se a string não for vazia, null ou undefined
     if (usuario) { 
       cy.get(loginPage.username)
         .clear()
