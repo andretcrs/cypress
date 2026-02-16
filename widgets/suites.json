@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"f2c2de95229e6fc2bb09b32f67aff794","name":"Fluxo de compra","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"bd0de033e758fef39d03e07eded5c197","name":"Login inválido","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
