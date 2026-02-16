@@ -1,3 +1,5 @@
+import '@shelex/cypress-allure-plugin'
+
 describe("API & Health Check - SauceDemo", () => {
   
   it("Deve validar se a página inicial está respondendo com status 200", () => {
@@ -17,17 +19,33 @@ describe("API & Health Check - SauceDemo", () => {
     })
   })
 
-  it("Deve validar o carregamento dos assets principais (manifest/css)", () => {
+  it("Deve validar o carregamento dos assets principais (manifest e CSS dinâmico)", () => {
     cy.allure()
       .epic("API")
       .feature("Performance")
       .severity("normal")
       .owner("Andre")
 
-
-    cy.request('/static/css/main.7067882d.chunk.css').then((response) => {
+    cy.request('/manifest.json').then((response) => {
       expect(response.status).to.eq(200)
-      expect(response.headers['content-type']).to.include('text/css')
+    })
+
+    cy.request('/').then((response) => {
+      const html = response.body
+      
+      const cssRegex = /\/[^"']+\/main\.[a-z0-9.]+\.css|\/main\.[a-z0-9.]+\.css/
+      const foundMatch = html.match(cssRegex)
+
+      if (foundMatch) {
+        const cssPath = foundMatch[0]
+        cy.request(cssPath).then((cssResponse) => {
+          expect(cssResponse.status).to.eq(200)
+          expect(cssResponse.headers['content-type']).to.include('text/css')
+        })
+      } else {
+        cy.log('HTML recebido:', html)
+        throw new Error("Não foi possível encontrar o arquivo CSS principal. O site pode ter mudado a estrutura de arquivos.")
+      }
     })
   })
 })
