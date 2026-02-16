@@ -17,8 +17,7 @@ describe("Login", () => {
       .severity("critical")
       .owner("Andre")
       .tag("smoke", "regressao")
-
-    // Utilizando o Command para o fluxo principal de sucesso
+      
     cy.login(Cypress.env("standardUser"), Cypress.env("password"))
     cy.url().should("include", "/inventory.html")
   })
@@ -114,6 +113,8 @@ describe("Login", () => {
 
     cy.get(loginPage.error)
       .should('be.visible')
-      .and('contain', "You can only access '/inventory.html' after you have logged in")
+      .and('contain.text', "You can only access")
+      .and('contain.text', "/inventory.html")
+      .and('contain.text', "when you are logged in") 
   })
 })
