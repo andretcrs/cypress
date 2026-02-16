@@ -1,4 +1,5 @@
 export const cartPage = {
+  checkoutBtn: '[data-test="checkout"]',
   cartItem: '.cart_item',
-  checkoutBtn: '[data-test="checkout"]'
+  removeButton: '[data-test^="remove-"]' // Seletor dinâmico para qualquer botão de remover no carrinho
 }

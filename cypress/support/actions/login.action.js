@@ -7,8 +7,20 @@ export class LoginAction {
   }
 
   logar(usuario, senha) {
-    cy.get(loginPage.username).type(usuario)
-    cy.get(loginPage.password).type(senha)
+
+    // Só digita se a string não for vazia, null ou undefined
+    if (usuario) { 
+      cy.get(loginPage.username)
+        .clear()
+        .type(usuario)
+    }
+
+    if (senha) { 
+      cy.get(loginPage.password)
+        .clear()
+        .type(senha)
+    }
+
     cy.get(loginPage.loginButton).click()
   }
 

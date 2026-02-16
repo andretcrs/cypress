@@ -3,6 +3,8 @@ export const checkoutPage = {
   lastName: '[data-test="lastName"]',
   postalCode: '[data-test="postalCode"]',
   continueBtn: '[data-test="continue"]',
+  cancelBtn: '[data-test="cancel"]',
+  errorMessage: '[data-test="error"]',
   finishBtn: '[data-test="finish"]',
-  successMsg: '.complete-header'
+  successHeader: '.complete-header'
 }

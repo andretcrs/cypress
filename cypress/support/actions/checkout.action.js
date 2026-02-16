@@ -1,12 +1,17 @@
 import { checkoutPage } from "../pages/checkout.page"
 
 export class CheckoutAction {
-
-  preencherDados() {
-    cy.get(checkoutPage.firstName).type("QA")
-    cy.get(checkoutPage.lastName).type("Automation")
-    cy.get(checkoutPage.postalCode).type("12345")
+  preencherDados(nome, sobrenome, cep) {
+    if (nome) cy.get(checkoutPage.firstName).type(nome)
+    if (sobrenome) cy.get(checkoutPage.lastName).type(sobrenome)
+    if (cep) cy.get(checkoutPage.postalCode).type(cep)
     cy.get(checkoutPage.continueBtn).click()
+  }
+
+  validarMensagemErro(mensagem) {
+    cy.get(checkoutPage.errorMessage)
+      .should("be.visible")
+      .and("contain", mensagem)
   }
 
   finalizarCompra() {
@@ -14,8 +19,6 @@ export class CheckoutAction {
   }
 
   validarSucesso() {
-    cy.get(checkoutPage.successMsg)
-      .should("have.text", "Thank you for your order!")
+    cy.get(checkoutPage.successHeader).should("have.text", "Thank you for your order!")
   }
-
 }
