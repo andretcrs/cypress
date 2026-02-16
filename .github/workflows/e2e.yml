@@ -76,3 +76,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
+
+      - name: 🔗 Mostrar Link do Relatório
+        if: always()
+        run: |
+          echo "### 📊 Relatório Allure Disponível!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "O deploy foi realizado e o relatório pode ser acessado em:" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 [https://andretcrs.github.io/cypress/](https://andretcrs.github.io/cypress/)" >> $GITHUB_STEP_SUMMARY

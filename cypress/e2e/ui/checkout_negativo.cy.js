@@ -25,8 +25,6 @@ describe("Fluxo de Checkout - Negativo", () => {
       .severity("normal")
       .owner("Andre")
       .tag("negativo", "regressao")
-
-    // Preenche nome e CEP dinâmicos, mas deixa o sobrenome nulo
     checkout.preencherDados(user.firstName, null, user.zipCode)
     checkout.validarMensagemErro("Error: Last Name is required")
   })
