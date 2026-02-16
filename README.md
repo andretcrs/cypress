@@ -2,7 +2,9 @@
 
 ![Cypress](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)
 ![Allure](https://img.shields.io/badge/report-Allure-purple)
-![CI](https://github.com/SEU-USUARIO/SEU-REPO/actions/workflows/e2e.yml/badge.svg)
+![CI](https://img.shields.io/badge/CI-passing-brightgreen?logo=github-actions&logoColor=white)
+
+
 
 Framework de automação de testes End-to-End desenvolvido com **Cypress**, utilizando arquitetura escalável, boas práticas de mercado e integração contínua com GitHub Actions.
 
