@@ -12,11 +12,11 @@ Framework de automação de testes End-to-End desenvolvido com **Cypress**, util
 
 Este projeto tem como objetivo demonstrar a construção de um framework de automação moderno, com foco em:
 
-✅ Escalabilidade  
-✅ Reutilização de código  
-✅ Facilidade de manutenção  
-✅ Execução em CI/CD  
-✅ Geração de relatórios ricos  
+ Escalabilidade  
+ Reutilização de código  
+ Facilidade de manutenção  
+ Execução em CI/CD  
+ Geração de relatórios ricos  
 
 ---
 
@@ -51,11 +51,11 @@ cypress
 
 ### Padrões utilizados
 
-- ✅ Page Objects → Mapeamento dos elementos  
-- ✅ Actions → Regras de negócio  
-- ✅ Custom Commands → Reutilização de código  
-- ✅ Data Factory → Massa de dados dinâmica  
-- ✅ Configuração multiambiente  
+-  Page Objects → Mapeamento dos elementos  
+-  Actions → Regras de negócio  
+-  Custom Commands → Reutilização de código  
+-  Data Factory → Massa de dados dinâmica  
+-  Configuração multiambiente  
 
 ---
 
@@ -103,11 +103,11 @@ npm run allure:report
 
 O relatório apresenta:
 
-- ✔ Evidências de falha  
-- ✔ Screenshots automáticos  
-- ✔ Tempo de execução  
-- ✔ Histórico de execuções  
-- ✔ Status dos testes  
+-  Evidências de falha  
+-  Screenshots automáticos  
+-  Tempo de execução  
+-  Histórico de execuções  
+-  Status dos testes  
 
 ---
 
@@ -163,7 +163,7 @@ Em caso de falha são gerados automaticamente:
 | **Checkout** |  E2E | Fluxo completo de compra utilizando dados do **Faker** | UI | `Blocker` |
 | **Checkout** |  Lógica | Verificação matemática de Subtotal, Taxas e Valor Total | UI | `Critical` |
 | **Checkout** |  Erro | Validação de campos obrigatórios no formulário de entrega | UI | `Normal` |
-| **API** | 🏥 Health | Validação de disponibilidade do host e tempo de resposta (SLA) | API | `Normal` |
+| **API** |  Health | Validação de disponibilidade do host e tempo de resposta (SLA) | API | `Normal` |
 
 ---
 
