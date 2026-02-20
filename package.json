@@ -5,26 +5,27 @@
   "main": "index.js",
 
   "scripts": {
-
     "cy:open": "cypress open",
 
-    "cy:run": "npm run allure:clear && cypress run && npm run allure:generate && npm run allure:open",
+    "cy:run": "npm run allure:clear && cypress run && npm run allure:history && npm run allure:generate && npm run allure:open",
 
-    "cy:run:ci": "npm run allure:clear && cypress run && npm run allure:generate",
+    "cy:run:ci": "npm run allure:clear && cypress run && npm run allure:history && npm run allure:generate",
 
-    "cy:run:chrome": "npm run allure:clear && cypress run --browser chrome && npm run allure:generate",
+    "cy:run:chrome": "npm run allure:clear && cypress run --browser chrome && npm run allure:history && npm run allure:generate",
 
-    "cy:run:headed": "npm run allure:clear && cypress run --headed && npm run allure:generate",
+    "cy:run:headed": "npm run allure:clear && cypress run --headed && npm run allure:history && npm run allure:generate",
 
-    "cy:run:dev": "npm run allure:clear && cypress run --env environment=dev && npm run allure:generate",
+    "cy:run:dev": "npm run allure:clear && cypress run --env environment=dev && npm run allure:history && npm run allure:generate",
 
-    "cy:run:hml": "npm run allure:clear && cypress run --env environment=hml && npm run allure:generate",
+    "cy:run:hml": "npm run allure:clear && cypress run --env environment=hml && npm run allure:history && npm run allure:generate",
 
-    "allure:clear": "rm -rf allure-results allure-report",
+    "allure:clear": "rm -rf allure-results",
 
-    "allure:generate": "allure generate allure-results --clean",
+    "allure:history": "cp -r allure-report/history allure-results 2>/dev/null || true",
 
-    "allure:open": "allure open",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+
+    "allure:open": "allure open allure-report",
 
     "test": "npm run cy:run"
   },
