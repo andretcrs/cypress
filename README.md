@@ -1,8 +1,6 @@
-# 🚀 QA E2E Automation - Cypress
+# QA E2E Automation - Cypress
 
-![Cypress](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)
-![Allure](https://img.shields.io/badge/report-Allure-purple)
-![CI](https://img.shields.io/badge/CI-passing-brightgreen?logo=github-actions&logoColor=white)
+
 
 
 
@@ -10,7 +8,7 @@ Framework de automação de testes End-to-End desenvolvido com **Cypress**, util
 
 ---
 
-## 📌 Objetivo
+## Objetivo
 
 Este projeto tem como objetivo demonstrar a construção de um framework de automação moderno, com foco em:
 
@@ -22,7 +20,7 @@ Este projeto tem como objetivo demonstrar a construção de um framework de auto
 
 ---
 
-## 🧪 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - Cypress
 - JavaScript
@@ -35,7 +33,7 @@ Este projeto tem como objetivo demonstrar a construção de um framework de auto
 
 ---
 
-## 🏗️ Arquitetura do projeto
+##  Arquitetura do projeto
 
 ```
 cypress
@@ -51,7 +49,7 @@ cypress
     └── utils
 ```
 
-### 📌 Padrões utilizados
+### Padrões utilizados
 
 - ✅ Page Objects → Mapeamento dos elementos  
 - ✅ Actions → Regras de negócio  
@@ -61,22 +59,19 @@ cypress
 
 ---
 
-## ⚙️ Instalação do projeto
+##  Instalação do projeto
 
 ```bash
-# Clonar o repositório
 git clone https://github.com/SEU-USUARIO/SEU-REPO.git
 
-# Entrar na pasta
 cd SEU-REPO
 
-# Instalar dependências
 npm install
 ```
 
 ---
 
-## ▶️ Execução dos testes
+##  Execução dos testes
 
 ### 🔹 Modo interativo
 
@@ -98,7 +93,7 @@ npm run cy:run:chrome
 
 ---
 
-## 📊 Relatório Allure
+## Relatório Allure
 
 ### Gerar e abrir o relatório
 
@@ -116,7 +111,7 @@ O relatório apresenta:
 
 ---
 
-## 🌍 Multiambiente
+## Multiambiente
 
 Configuração feita no `cypress.config.js`.
 
@@ -129,7 +124,7 @@ npx cypress run --env environment=hml
 
 ---
 
-## 🔄 Integração Contínua (CI/CD)
+## Integração Contínua (CI/CD)
 
 Pipeline configurada no **GitHub Actions** para:
 
@@ -138,7 +133,7 @@ Pipeline configurada no **GitHub Actions** para:
 - Gerar o Allure Report  
 - Publicar o relatório automaticamente no GitHub Pages  
 
-### 📌 Acesse o relatório online
+### Acesse o relatório online
 
 ```
 https://SEU-USUARIO.github.io/SEU-REPO
@@ -146,33 +141,33 @@ https://SEU-USUARIO.github.io/SEU-REPO
 
 ---
 
-## 📸 Evidências
+## Evidências
 
 Em caso de falha são gerados automaticamente:
 
-- 📷 Screenshots  
-- 🎥 Vídeos da execução  
+-  Screenshots  
+-  Vídeos da execução  
 
 ---
 
-## 📋 Plano de Testes & Cobertura
+## Plano de Testes & Cobertura
 
 | Módulo | Tipo | Cenário de Teste | Camada | Severidade |
 | :--- | :--- | :--- | :--- | :--- |
-| **Login** | ✅ Sucesso | Autenticação com credenciais válidas e redirecionamento | UI | `Blocker` |
-| **Login** | ❌ Erro | Validação de senha inválida, usuário bloqueado e campos vazios | UI | `Critical` |
-| **Segurança** | 🔒 URL | Bloqueio de acesso direto a páginas internas sem sessão ativa | UI | `Critical` |
-| **Inventário** | ⚙️ Lógica | Ordenação de produtos por preço e nome (Filtros) | UI | `Normal` |
-| **Carrinho** | 🔄 Estado | Persistência de itens após ciclo de Logout/Login | UI | `Critical` |
-| **Carrinho** | 🗑️ Ação | Remoção de itens via vitrine e via página de checkout | UI | `Normal` |
-| **Checkout** | 🛍️ E2E | Fluxo completo de compra utilizando dados do **Faker** | UI | `Blocker` |
-| **Checkout** | 🧮 Lógica | Verificação matemática de Subtotal, Taxas e Valor Total | UI | `Critical` |
-| **Checkout** | ❌ Erro | Validação de campos obrigatórios no formulário de entrega | UI | `Normal` |
+| **Login** |  Sucesso | Autenticação com credenciais válidas e redirecionamento | UI | `Blocker` |
+| **Login** |  Erro | Validação de senha inválida, usuário bloqueado e campos vazios | UI | `Critical` |
+| **Segurança** |  URL | Bloqueio de acesso direto a páginas internas sem sessão ativa | UI | `Critical` |
+| **Inventário** |  Lógica | Ordenação de produtos por preço e nome (Filtros) | UI | `Normal` |
+| **Carrinho** |  Estado | Persistência de itens após ciclo de Logout/Login | UI | `Critical` |
+| **Carrinho** |  Ação | Remoção de itens via vitrine e via página de checkout | UI | `Normal` |
+| **Checkout** |  E2E | Fluxo completo de compra utilizando dados do **Faker** | UI | `Blocker` |
+| **Checkout** |  Lógica | Verificação matemática de Subtotal, Taxas e Valor Total | UI | `Critical` |
+| **Checkout** |  Erro | Validação de campos obrigatórios no formulário de entrega | UI | `Normal` |
 | **API** | 🏥 Health | Validação de disponibilidade do host e tempo de resposta (SLA) | API | `Normal` |
 
 ---
 
-## 🧠 Boas práticas aplicadas
+##  Boas práticas aplicadas
 
 - Separação de responsabilidades  
 - Testes independentes  
@@ -184,7 +179,7 @@ Em caso de falha são gerados automaticamente:
 
 ---
 
-## 📦 Scripts disponíveis
+##  Scripts disponíveis
 
 ```bash
 npm run cy:open
@@ -199,7 +194,7 @@ npm run allure:report
 
 ---
 
-## 🏷️ Topics
+##  Topics
 
 ```
 cypress
@@ -213,14 +208,14 @@ page-objects
 
 ---
 
-## 👨‍💻 Autor
+##  Autor
 
 **André Scheffer**  
-QA Engineer 🚀
+QA Engineer 
 
 ---
 
-## ⭐ Diferenciais deste projeto
+##  Diferenciais deste projeto
 
 Este projeto demonstra na prática:
 
