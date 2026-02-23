@@ -62,7 +62,7 @@ cypress
 ##  Instalação do projeto
 
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+git clone https://github.com/andretcrs/cypress.git
 
 cd SEU-REPO
 
@@ -73,19 +73,19 @@ npm install
 
 ##  Execução dos testes
 
-### 🔹 Modo interativo
+### Modo interativo
 
 ```bash
 npm run cy:open
 ```
 
-### 🔹 Modo headless
+### Modo headless
 
 ```bash
 npm run cy:run
 ```
 
-### 🔹 Executar em um browser específico
+### Executar em um browser específico
 
 ```bash
 npm run cy:run:chrome
@@ -219,7 +219,6 @@ QA Engineer
 
 Este projeto demonstra na prática:
 
-- Arquitetura utilizada por QAs Pleno/Sênior  
 - Automação pronta para CI/CD  
 - Geração de relatórios profissionais  
 - Estrutura escalável para grandes aplicações  
