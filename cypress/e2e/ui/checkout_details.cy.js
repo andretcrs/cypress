@@ -6,13 +6,18 @@ const inventory = new InventoryAction()
 const checkout = new CheckoutAction()
 
 describe("Validação de Valores no Checkout", () => {
+
   beforeEach(() => {
-    cy.login("standard_user", "secret_sauce")
+    cy.login(
+      Cypress.env("standardUser"),
+      Cypress.env("password")
+    )
   })
 
   it("Deve validar se a soma dos preços e taxas está correta", () => {
+
     const user = UserFactory.gerarDadosDeEntrega()
-    
+
     cy.allure()
       .epic("E2E")
       .feature("Checkout")
@@ -23,9 +28,14 @@ describe("Validação de Valores no Checkout", () => {
 
     inventory.adicionarProduto()
     inventory.acessarCarrinho()
+
     cy.get('[data-test="checkout"]').click()
-    
-    checkout.preencherDados(user.firstName, user.lastName, user.zipCode)
+
+    checkout.preencherDados(
+      user.firstName,
+      user.lastName,
+      user.zipCode
+    )
 
     cy.get('.summary_subtotal_label').should('contain', '$29.99')
     cy.get('.summary_tax_label').should('contain', '$2.40')

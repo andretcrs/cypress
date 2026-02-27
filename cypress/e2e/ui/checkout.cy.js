@@ -10,7 +10,10 @@ describe("Fluxo de compra", () => {
   const checkout = new CheckoutAction()
 
   beforeEach(() => {
-    cy.login("standard_user", "secret_sauce")
+   cy.login(
+      Cypress.env("standardUser"),
+      Cypress.env("password")
+    )
     inventory.validarHome()
   })
 

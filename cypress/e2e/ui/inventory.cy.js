@@ -5,7 +5,10 @@ const inventory = new InventoryAction()
 describe("Fluxo de Carrinho", () => {
 
   beforeEach(() => {
-    cy.login("standard_user", "secret_sauce")
+    cy.login(
+      Cypress.env("standardUser"),
+      Cypress.env("password")
+    )
     inventory.validarHome()
   })
 
@@ -23,7 +26,10 @@ describe("Fluxo de Carrinho", () => {
     cy.get('#react-burger-menu-btn').click()
     cy.get('#logout_sidebar_link').click()
     
-    cy.login("standard_user", "secret_sauce")
+    cy.login(
+      Cypress.env("standardUser"),
+      Cypress.env("password")
+    )
     
     cy.get('.shopping_cart_badge').should('have.text', '1')
   })

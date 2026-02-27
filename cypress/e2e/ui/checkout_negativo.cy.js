@@ -8,7 +8,10 @@ const inventory = new InventoryAction()
 
 describe("Fluxo de Checkout - Negativo", () => {
   beforeEach(() => {
-    cy.login("standard_user", "secret_sauce")
+    cy.login(
+      Cypress.env("standardUser"),
+      Cypress.env("password")
+    )
     
     inventory.adicionarProduto()
     inventory.acessarCarrinho()

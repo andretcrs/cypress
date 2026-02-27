@@ -16,28 +16,33 @@ jobs:
 
   cypress-run:
     runs-on: ubuntu-latest
+
     strategy:
       fail-fast: false
       matrix:
         test-group: [ui, api]
 
     steps:
-      - name:  Checkout do projeto
+      - name: Checkout do projeto
         uses: actions/checkout@v4
 
-      - name:  Instalar Node
+      - name: Instalar Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name:  Instalar dependências
+      - name: Instalar dependências
         run: npm ci
 
-      - name:  Rodar testes Cypress (${{ matrix.test-group }})
+      - name: Rodar testes Cypress (${{ matrix.test-group }})
         run: npx cypress run --spec "cypress/e2e/${{ matrix.test-group }}/**/*"
+        env:
+          CYPRESS_standardUser: ${{ secrets.CYPRESS_STANDARDUSER }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
+          CYPRESS_lockedUser: ${{ secrets.CYPRESS_LOCKEDUSER }}
 
-      - name:  Salvar allure-results
+      - name: Salvar allure-results
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -51,52 +56,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name:  Checkout do projeto
+      - name: Checkout do projeto
         uses: actions/checkout@v4
 
-      - name:  Baixar todos os allure-results
+      - name: Baixar todos os allure-results
         uses: actions/download-artifact@v4
         with:
           path: combined-results
           pattern: allure-results-*
           merge-multiple: true
 
-     
-      - name:  Baixar histórico do GitHub Pages
+      - name: Baixar histórico do GitHub Pages
         uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages
         continue-on-error: true
 
-      
-      - name:  Restaurar history
+      - name: Restaurar history
         run: |
           if [ -d "gh-pages/history" ]; then
             mkdir -p combined-results/history
             cp -r gh-pages/history/* combined-results/history/
           fi
 
-      - name: ☕ Instalar Java
+      - name: Instalar Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      - name:  Gerar Allure Report
+      - name: Gerar Allure Report
         run: |
           npm install -g allure-commandline
           allure generate combined-results --clean -o allure-report
 
-      - name:  Publicar no GitHub Pages
+      - name: Publicar no GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
 
-      - name: 🔗 Mostrar Link do Relatório
+      - name: Mostrar Link do Relatório
         if: always()
         run: |
-          echo "###  Relatório Allure Disponível!" >> $GITHUB_STEP_SUMMARY
+          echo "### Relatório Allure Disponível!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo " https://andretcrs.github.io/cypress/" >> $GITHUB_STEP_SUMMARY
+          echo "https://andretcrs.github.io/cypress/" >> $GITHUB_STEP_SUMMARY
