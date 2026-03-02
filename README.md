@@ -152,8 +152,8 @@ Em caso de falha são gerados automaticamente:
 
 ## Plano de Testes & Cobertura
 
-| Módulo | Tipo | Cenário de Teste | Camada | Severidade |
-| :--- | :--- | :--- | :--- | :--- |
+| Módulo | Tipo | Cenário de Teste | Camada |
+| :--- | :--- | :--- | :--- |
 | **Login** |  Sucesso | Autenticação com credenciais válidas e redirecionamento | UI |
 | **Login** |  Erro | Validação de senha inválida, usuário bloqueado e campos vazios | UI |
 | **Segurança** |  URL | Bloqueio de acesso direto a páginas internas sem sessão ativa | UI |
@@ -172,7 +172,6 @@ Em caso de falha são gerados automaticamente:
 - Separação de responsabilidades  
 - Testes independentes  
 - Dados dinâmicos com Faker  
-- Retry automático em falhas  
 - Configuração por ambiente  
 - Estrutura escalável  
 - Código reutilizável  
