@@ -1,20 +1,19 @@
-import { loginPage } from "../pages/login.page"
+/* global cy  */
+import { loginPage } from '../pages/login.page'
 
 export class LoginAction {
-
-  acessarLogin() {
-    cy.visit("/")
+  acessarLogin () {
+    cy.visit('/')
   }
 
-  logar(usuario, senha) {
-
-    if (usuario) { 
+  logar (usuario, senha) {
+    if (usuario) {
       cy.get(loginPage.username)
         .clear()
         .type(usuario)
     }
 
-    if (senha) { 
+    if (senha) {
       cy.get(loginPage.password)
         .clear()
         .type(senha)
@@ -22,5 +21,4 @@ export class LoginAction {
 
     cy.get(loginPage.loginButton).click()
   }
-
 }

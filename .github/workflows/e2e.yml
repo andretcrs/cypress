@@ -41,6 +41,8 @@ jobs:
           CYPRESS_standardUser: ${{ secrets.CYPRESS_STANDARDUSER }}
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_lockedUser: ${{ secrets.CYPRESS_LOCKEDUSER }}
+          CYPRESS_pwErrada: ${{ secrets.CYPRESS_SENHA_ERRADA }}
+          CYPRESS_userNameInvalid: ${{ secrets.CYPRESS_NOME_INVALIDO }}
 
       - name: Salvar allure-results
         if: always()

@@ -1,28 +1,24 @@
-import { inventoryPage } from "../pages/inventory.page"
+/* global cy  */
+import { inventoryPage } from '../pages/inventory.page'
 
 export class InventoryAction {
-
-  validarHome() {
-    cy.get(inventoryPage.title).should("have.text", "Products")
-  }
-
-  adicionarProduto() {
+  adicionarProduto () {
     cy.get(inventoryPage.addBackpack).click()
   }
 
-  removerProduto() {
+  removerProduto () {
     cy.get(inventoryPage.removeBackpack).click()
   }
 
-  acessarCarrinho() {
+  acessarCarrinho () {
     cy.get(inventoryPage.cartIcon).click()
   }
 
-  ordenarProdutos(value) {
+  ordenarProdutos (value) {
     cy.get(inventoryPage.sortContainer).select(value)
   }
 
-  validarCarrinhoVazio() {
+  validarCarrinhoVazio () {
     cy.get(inventoryPage.cartBadge).should('not.exist')
   }
 }

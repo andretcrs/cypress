@@ -1,47 +1,26 @@
-import { CheckoutAction } from "../../support/actions/checkout.action"
-import { InventoryAction } from "../../support/actions/inventory.action"
-import { UserFactory } from "../../support/dataFactory/user.factory" 
-import { cartPage } from "../../support/pages/cart.page" 
+/* global it, describe  */
+import { CheckoutAction } from '../../support/actions/checkout.action'
+import { InventoryAction } from '../../support/actions/inventory.action'
+import { UserFactory } from '../../support/dataFactory/user.factory'
+import { setupTests } from '../../support/setup'
+import ComandosComuns from '../../support/comandosComuns.js'
+import { PAGINAS } from '../../support/rotas.js'
 
-const checkout = new CheckoutAction()
-const inventory = new InventoryAction()
+const Checkout = new CheckoutAction()
+const Inventory = new InventoryAction()
 
-describe("Fluxo de Checkout - Negativo", () => {
-  beforeEach(() => {
-    cy.login(
-      Cypress.env("standardUser"),
-      Cypress.env("password")
-    )
-    
-    inventory.adicionarProduto()
-    inventory.acessarCarrinho()
-    cy.get(cartPage.checkoutBtn).click()
-  })
+setupTests()
 
-  it("Deve exibir erro ao omitir o sobrenome no checkout", () => {
+describe('Fluxo de Checkout - Negativo', () => {
+  it('Deve exibir erro ao omitir o sobrenome no checkout', () => {
+    Inventory.adicionarProduto()
+    Inventory.acessarCarrinho()
+    ComandosComuns.clicarNoBotaoComTexto('Checkout')
     const user = UserFactory.gerarDadosDeEntrega()
 
-    cy.allure()
-      .epic("E2E")
-      .feature("Checkout")
-      .story("Validação de Campos")
-      .severity("normal")
-      .owner("Andre")
-      .tag("negativo", "regressao")
-    checkout.preencherDados(user.firstName, null, user.zipCode)
-    checkout.validarMensagemErro("Error: Last Name is required")
-  })
-
-  it("Deve permitir cancelar o checkout e retornar ao carrinho", () => {
-    cy.allure()
-      .epic("E2E")
-      .feature("Checkout")
-      .story("Cancelamento")
-      .severity("minor")
-      .owner("Andre")
-      .tag("regressao")
-
-    cy.get('[data-test="cancel"]').click()
-    cy.url().should("include", "/cart.html")
+    Checkout.preencherDados(user.firstName, null, user.zipCode)
+    ComandosComuns.validarMensagemErro('Error: Last Name is required')
+    ComandosComuns.clicarNoTexto('Cancel')
+    ComandosComuns.validarURl(PAGINAS.CARRINHO)
   })
 })

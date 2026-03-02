@@ -1,4 +1,5 @@
-import { LoginAction } from "./actions/login.action"
+/* global Cypress  */
+import { LoginAction } from './actions/login.action'
 const login = new LoginAction()
 
 Cypress.Commands.add('login', (user, password) => {

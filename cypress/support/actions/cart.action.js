@@ -1,15 +1,16 @@
-import { cartPage } from "../pages/cart.page"
+/* global cy */
+import { cartPage } from '../pages/cart.page'
 
 export class CartAction {
-  removerProduto() {
+  removerProduto () {
     cy.get(cartPage.removeButton).click()
   }
 
-  validarCarrinhoVazio() {
+  validarCarrinhoVazio () {
     cy.get(cartPage.cartItem).should('not.exist')
   }
 
-  clicarCheckout() {
+  clicarCheckout () {
     cy.get(cartPage.checkoutBtn).click()
   }
 }

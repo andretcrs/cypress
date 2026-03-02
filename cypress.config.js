@@ -1,5 +1,5 @@
-const { defineConfig } = require("cypress");
-const allureWriter = require("@shelex/cypress-allure-plugin/writer");
+const { defineConfig } = require('cypress')
+const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 
 module.exports = defineConfig({
 
@@ -14,36 +14,30 @@ module.exports = defineConfig({
 
   chromeWebSecurity: false,
 
-  retries: {
-    runMode: 2,
-    openMode: 0,
-  },
-
   e2e: {
 
-    specPattern: "cypress/e2e/**/*.cy.js",
-    supportFile: "cypress/support/e2e.js",
+    specPattern: 'cypress/e2e/**/*.cy.js',
+    supportFile: 'cypress/support/e2e.js',
 
-    setupNodeEvents(on, config) {
-
-      allureWriter(on, config);
+    setupNodeEvents (on, config) {
+      allureWriter(on, config)
 
       const environments = {
-        dev: "https://www.saucedemo.com",
-        hml: "https://www.saucedemo.com",
-      };
+        dev: 'https://www.saucedemo.com',
+        hml: 'https://www.saucedemo.com'
+      }
 
-      const environment = config.env.environment || "dev";
+      const environment = config.env.environment || 'dev'
 
-      config.baseUrl = environments[environment];
+      config.baseUrl = environments[environment]
 
-      return config;
+      return config
     },
 
     env: {
       allure: true,
       allureReuseAfterSpec: true,
-      environment: "dev"
-    },
-  },
-});
+      environment: 'dev'
+    }
+  }
+})

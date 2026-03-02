@@ -154,16 +154,16 @@ Em caso de falha são gerados automaticamente:
 
 | Módulo | Tipo | Cenário de Teste | Camada | Severidade |
 | :--- | :--- | :--- | :--- | :--- |
-| **Login** |  Sucesso | Autenticação com credenciais válidas e redirecionamento | UI | `Blocker` |
-| **Login** |  Erro | Validação de senha inválida, usuário bloqueado e campos vazios | UI | `Critical` |
-| **Segurança** |  URL | Bloqueio de acesso direto a páginas internas sem sessão ativa | UI | `Critical` |
-| **Inventário** |  Lógica | Ordenação de produtos por preço e nome (Filtros) | UI | `Normal` |
-| **Carrinho** |  Estado | Persistência de itens após ciclo de Logout/Login | UI | `Critical` |
-| **Carrinho** |  Ação | Remoção de itens via vitrine e via página de checkout | UI | `Normal` |
-| **Checkout** |  E2E | Fluxo completo de compra utilizando dados do **Faker** | UI | `Blocker` |
-| **Checkout** |  Lógica | Verificação matemática de Subtotal, Taxas e Valor Total | UI | `Critical` |
-| **Checkout** |  Erro | Validação de campos obrigatórios no formulário de entrega | UI | `Normal` |
-| **API** |  Health | Validação de disponibilidade do host e tempo de resposta (SLA) | API | `Normal` |
+| **Login** |  Sucesso | Autenticação com credenciais válidas e redirecionamento | UI |
+| **Login** |  Erro | Validação de senha inválida, usuário bloqueado e campos vazios | UI |
+| **Segurança** |  URL | Bloqueio de acesso direto a páginas internas sem sessão ativa | UI |
+| **Inventário** |  Lógica | Ordenação de produtos por preço e nome (Filtros) | UI |
+| **Carrinho** |  Estado | Persistência de itens após ciclo de Logout/Login | UI | 
+| **Carrinho** |  Ação | Remoção de itens via vitrine e via página de checkout | UI |
+| **Checkout** |  E2E | Fluxo completo de compra utilizando dados do **Faker** | UI |
+| **Checkout** |  Lógica | Verificação matemática de Subtotal, Taxas e Valor Total | UI |
+| **Checkout** |  Erro | Validação de campos obrigatórios no formulário de entrega | UI | 
+| **API** |  Health | Validação de disponibilidade do host e tempo de resposta (SLA) | API |
 
 ---
 
