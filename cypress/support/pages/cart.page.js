@@ -1,6 +1,6 @@
 export const cartPage = {
-  checkoutBtn: '[data-test="checkout"]',
-  removeButton: '[data-test^="remove-"]',
+  BtnCheckout: '[data-test="checkout"]',
+  BtnRemover: '[data-test^="remove-"]',
   btnRemoverProduto: '[data-test^="add-to-cart"]',
   qtdeItemCarrinho: '.shopping_cart_badge',
   itemCarrinho: '.cart_item',

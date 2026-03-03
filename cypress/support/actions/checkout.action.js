@@ -11,11 +11,7 @@ export class CheckoutAction {
   finalizarCompra () {
     cy.get(checkoutPage.botaoFinalizar).click()
   }
-
-  validarSucesso () {
-    cy.get(checkoutPage.successoHeader).should('have.text', 'Thank you for your order!')
-  }
-
+  
   validarSubtotal (valorEsperado) {
     cy.get(checkoutPage.valorItemSemImposto)
       .should('be.visible')

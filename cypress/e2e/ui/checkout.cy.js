@@ -5,6 +5,7 @@ import { UserFactory } from '../../support/dataFactory/user.factory'
 import { cartPage } from '../../support/pages/cart.page'
 import { setupTests } from '../../support/setup'
 import { CartAction } from '../../support/actions/cart.action'
+import ComandosComuns from '../../support/comandosComuns.js'
 
 setupTests()
 describe('Fluxo de compra', () => {
@@ -17,11 +18,12 @@ describe('Fluxo de compra', () => {
     Inventory.adicionarProduto()
     Carrinho.acessarCarrinho()
 
-    cy.get(cartPage.checkoutBtn).click()
+    cy.get(cartPage.BtnCheckout).click()
 
     Checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
     Checkout.finalizarCompra()
-    Checkout.validarSucesso()
+    ComandosComuns.validarMensagem("Thank you for your order!")
+    
   })
 
   it('Deve finalizar compra com múltiplos produtos no carrinho', () => {
@@ -30,9 +32,9 @@ describe('Fluxo de compra', () => {
     Carrinho.adicionarProdutosAoCarrinho(3)
     Carrinho.acessarCarrinho()
     Carrinho.validarQuantidadeCarrinho(3)
-    cy.get(cartPage.checkoutBtn).click()
+    cy.get(cartPage.BtnCheckout).click()
     Checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
     Checkout.finalizarCompra()
-    Checkout.validarSucesso()
+    ComandosComuns.validarMensagem("Thank you for your order!")
   })
 })

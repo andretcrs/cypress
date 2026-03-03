@@ -32,16 +32,16 @@ describe('Fluxo de Carrinho', () => {
     Carrinho.validarCarrinhoVazio()
   })
 
-  it('Deve validar se o produto adicionado corresponde ao item no carrinho', () => {
-    ComandosComuns.clicarNoDataTest('add-to-cart-sauce-labs-fleece-jacket')
-    Carrinho.acessarCarrinho()
-
-    Carrinho.validarNomeProdutoNoCarrinho('Sauce Labs Fleece Jacket')
-    Carrinho.validarPrecoProdutoNoCarrinho('$49.99')
-  })
+it('Deve validar se o produto adicionado corresponde ao item no carrinho', () => {
+    Inventory.adicionarPrimeiroProdutoEGuardarDados().then((produto) => {
+        Carrinho.acessarCarrinho()
+        Carrinho.validarNomeProdutoNoCarrinho(produto.nome)
+        Carrinho.validarPrecoProdutoNoCarrinho(produto.preco)
+    })
+})
 
   it('Deve permitir retornar à vitrine a partir da página de detalhes do produto', () => {
-    ComandosComuns.clicarNoItemPeloId('4')
+    ComandosComuns.clicarNoItemPeloId('1')
     ComandosComuns.clicarNoDataTest('back-to-products')
     ComandosComuns.validarURl(PAGINAS.INVENTARIO)
   })

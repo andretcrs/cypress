@@ -3,11 +3,11 @@ import { inventoryPage } from '../pages/inventory.page'
 
 export class CartAction {
   removerProduto () {
-    cy.get(cartPage.removeButton).click()
+    cy.get(cartPage.BtnRemover).click()
   }
 
   clicarCheckout () {
-    cy.get(cartPage.checkoutBtn).click()
+    cy.get(cartPage.BtnCheckout).click()
   }
 
   adicionarProdutosAoCarrinho (quantidade) {
