@@ -1,10 +1,11 @@
-/* global Cypress, cy, it, describe  */
 import { InventoryAction } from '../../support/actions/inventory.action'
 import { setupTests } from '../../support/setup'
 import ComandosComuns from '../../support/comandosComuns.js'
-import { PAGINAS } from '../../support/rotas.js'
+import { PAGINAS } from '../../support/rotas'
+import { CartAction } from '../../support/actions/cart.action'
 
 const Inventory = new InventoryAction()
+const Carrinho = new CartAction()
 
 setupTests()
 describe('Fluxo de Carrinho', () => {
@@ -13,30 +14,30 @@ describe('Fluxo de Carrinho', () => {
     ComandosComuns.abrirMenuLateral()
     ComandosComuns.clicarNoTexto('Logout')
     cy.login(Cypress.env('standardUser'), Cypress.env('password'))
-    ComandosComuns.validarQuantidadeCarrinho(1)
+    Carrinho.validarQuantidadeCarrinho(1)
   })
 
   it('Deve remover um produto diretamente de dentro da página do carrinho', () => {
     Inventory.adicionarProduto()
-    Inventory.acessarCarrinho()
+    Carrinho.acessarCarrinho()
     ComandosComuns.clicarNoDataTest('remove-sauce-labs-backpack')
-    ComandosComuns.validarCarrinhoVazio()
+    Carrinho.validarCarrinhoVazio()
   })
 
   it('Deve limpar o carrinho ao clicar em Reset App State', () => {
     Inventory.adicionarProduto()
-    ComandosComuns.validarQuantidadeCarrinho(1)
+    Carrinho.validarQuantidadeCarrinho(1)
     ComandosComuns.abrirMenuLateral()
     ComandosComuns.clicarNoTexto('Reset App State')
-    ComandosComuns.validarCarrinhoVazio()
+    Carrinho.validarCarrinhoVazio()
   })
 
   it('Deve validar se o produto adicionado corresponde ao item no carrinho', () => {
     ComandosComuns.clicarNoDataTest('add-to-cart-sauce-labs-fleece-jacket')
-    Inventory.acessarCarrinho()
+    Carrinho.acessarCarrinho()
 
-    ComandosComuns.validarNomeProdutoNoCarrinho('Sauce Labs Fleece Jacket')
-    ComandosComuns.validarPrecoProdutoNoCarrinho('$49.99')
+    Carrinho.validarNomeProdutoNoCarrinho('Sauce Labs Fleece Jacket')
+    Carrinho.validarPrecoProdutoNoCarrinho('$49.99')
   })
 
   it('Deve permitir retornar à vitrine a partir da página de detalhes do produto', () => {

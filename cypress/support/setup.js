@@ -1,4 +1,3 @@
-/* global Cypress, cy, beforeEach */
 export const setupTests = () => {
   beforeEach(() => {
     if (!Cypress.env('skipLogin')) {

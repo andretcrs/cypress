@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+  "rules": {
+    "cypress/no-unnecessary-waiting": "warn",
+    "cypress/assertion-before-screenshot": "error"
+  },
+  "env": {
+    "cypress/globals": true
+  }
+}

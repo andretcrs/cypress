@@ -1,24 +1,19 @@
-/* global cy  */
 import { inventoryPage } from '../pages/inventory.page'
 
 export class InventoryAction {
   adicionarProduto () {
-    cy.get(inventoryPage.addBackpack).click()
+    cy.get(inventoryPage.adicionarCarrinho).click()
   }
 
   removerProduto () {
-    cy.get(inventoryPage.removeBackpack).click()
-  }
-
-  acessarCarrinho () {
-    cy.get(inventoryPage.cartIcon).click()
+    cy.get(inventoryPage.removerCarrinho).click()
   }
 
   ordenarProdutos (value) {
-    cy.get(inventoryPage.sortContainer).select(value)
+    cy.get(inventoryPage.ordenarProdutos).select(value)
   }
 
   validarCarrinhoVazio () {
-    cy.get(inventoryPage.cartBadge).should('not.exist')
+    cy.get(inventoryPage.carrinhoBadge).should('not.exist')
   }
 }

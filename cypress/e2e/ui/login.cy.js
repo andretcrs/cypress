@@ -1,18 +1,17 @@
-/* global Cypress, cy, before, it, describe  */
 import '@shelex/cypress-allure-plugin'
 import { setupTests } from '../../support/setup'
 import ComandosComuns from '../../support/comandosComuns.js'
 import { PAGINAS } from '../../support/rotas.js'
 
 setupTests()
-describe('Login', () => {
+describe('Login com sucesso', () => {
   it('Deve realizar login com sucesso', () => {
     ComandosComuns.validarMensagem('Swag Labs')
     ComandosComuns.validarURl(PAGINAS.INVENTARIO)
   })
 })
 
-describe.only('Login', () => {
+describe('Login sem sucesso', () => {
   before(() => {
     Cypress.env('skipLogin', true)
   })

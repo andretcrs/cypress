@@ -1,4 +1,3 @@
-/* global cy  */
 import { loginPage } from '../pages/login.page'
 
 export class LoginAction {

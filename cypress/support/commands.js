@@ -1,4 +1,3 @@
-/* global Cypress  */
 import { LoginAction } from './actions/login.action'
 const login = new LoginAction()
 
