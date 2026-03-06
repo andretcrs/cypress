@@ -1,44 +1,40 @@
-import { acaoInventario } from '@actions/acaoInventario.js'
-import { acaoCarrinho } from '@actions/acaoCarrinho.js'
+import { paginaInventario } from '@pages/paginaInventario.js'
+import { paginaCarrinho } from '@pages/paginaCarrinho.js'
 import { setupTests } from '@support/setup.js'
-import { paginas } from '@support/rotas.js'
 import comandosComuns from '@support/comandosComuns.js'
-
-
-
+import { paginas } from '@support/rotas.js'
 
 describe('Fluxo de Carrinho', () => {
   setupTests()
-  const inventario = new acaoInventario()
-  const carrinho = new acaoCarrinho()
+
   it('Deve manter o produto no carrinho após fazer logout e login novamente', () => {
-    inventario.adicionarProduto()
+    paginaInventario.adicionarProduto()
     comandosComuns.abrirMenuLateral()
     comandosComuns.clicarNoTexto('Logout')
     cy.login(Cypress.env('standardUser'), Cypress.env('password'))
-    carrinho.validarQuantidadeCarrinho(1)
+    paginaCarrinho.validarQuantidadeCarrinho(1)
   })
 
   it('Deve remover um produto diretamente de dentro da página do carrinho', () => {
-    inventario.adicionarProduto()
-    carrinho.acessarCarrinho()
+    paginaInventario.adicionarProduto()
+    paginaCarrinho.acessarCarrinho()
     comandosComuns.clicarNoDataTest('remove-sauce-labs-backpack')
-    carrinho.validarCarrinhoVazio()
+    paginaCarrinho.validarCarrinhoVazio()
   })
 
   it('Deve limpar o carrinho ao clicar em Reset App State', () => {
-    inventario.adicionarProduto()
-    carrinho.validarQuantidadeCarrinho(1)
+    paginaInventario.adicionarProduto()
+    paginaCarrinho.validarQuantidadeCarrinho(1)
     comandosComuns.abrirMenuLateral()
     comandosComuns.clicarNoTexto('Reset App State')
-    carrinho.validarCarrinhoVazio()
+    paginaCarrinho.validarCarrinhoVazio()
   })
 
 it('Deve validar se o produto adicionado corresponde ao item no carrinho', () => {
-    inventario.adicionarPrimeiroProdutoEGuardarDados().then((produto) => {
-        carrinho.acessarCarrinho()
-        carrinho.validarNomeProdutoNoCarrinho(produto.nome)
-        carrinho.validarPrecoProdutoNoCarrinho(produto.preco)
+    paginaInventario.adicionarPrimeiroProdutoEGuardarDados().then((produto) => {
+        paginaCarrinho.acessarCarrinho()
+        paginaCarrinho.validarNomeProdutoNoCarrinho(produto.nome)
+        paginaCarrinho.validarPrecoProdutoNoCarrinho(produto.preco)
     })
 })
 

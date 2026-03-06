@@ -1,27 +1,22 @@
 import '@shelex/cypress-allure-plugin'
-import { acaoInventario } from '@actions/acaoInventario.js'
-import { acaoCheckout } from '@actions/acaoCheckout.js'
+import { paginaInventario } from '@pages/paginaInventario.js'
+import { paginaCheckout } from '@pages/paginaCheckout.js'
 import { userFactory } from '@factories/user.factory.js'
 import { paginaCarrinho } from '@pages/paginaCarrinho.js'
 import { setupTests } from '@support/setup.js'
-import { acaoCarrinho } from '@actions/acaoCarrinho'
 import comandosComuns from '@support/comandosComuns.js'
 
 describe('Fluxo de compra', () => {
   setupTests()
-  const inventario = new acaoInventario()
-  const checkout = new acaoCheckout()
-  const carrinho = new acaoCarrinho()
 
   it('Deve finalizar compra com sucesso', () => {
     const user = userFactory.gerarDadosDeEntrega()
-    inventario.adicionarProduto()
-    carrinho.acessarCarrinho()
+    paginaInventario.adicionarProduto()
+    paginaCarrinho.acessarCarrinho()
+    paginaCarrinho.clicarCheckout()
 
-    cy.get(paginaCarrinho.BtnCheckout).click()
-
-    checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
-    checkout.finalizarCompra()
+    paginaCheckout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
+    paginaCheckout.finalizarCompra()
     comandosComuns.validarMensagem("Thank you for your order!")
     
   })
@@ -29,12 +24,12 @@ describe('Fluxo de compra', () => {
   it('Deve finalizar compra com múltiplos produtos no carrinho', () => {
     const user = userFactory.gerarDadosDeEntrega()
 
-    carrinho.adicionarProdutosAoCarrinho(3)
-    carrinho.acessarCarrinho()
-    carrinho.validarQuantidadeCarrinho(3)
-    cy.get(paginaCarrinho.BtnCheckout).click()
-    checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
-    checkout.finalizarCompra()
+    paginaCarrinho.adicionarProdutosAoCarrinho(3)
+    paginaCarrinho.acessarCarrinho()
+    paginaCarrinho.validarQuantidadeCarrinho(3)
+    paginaCarrinho.clicarCheckout()
+    paginaCheckout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
+    paginaCheckout.finalizarCompra()
     comandosComuns.validarMensagem("Thank you for your order!")
   })
 })

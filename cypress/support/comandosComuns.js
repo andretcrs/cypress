@@ -1,4 +1,4 @@
-import { paginaCheckout } from '@pages/paginaCheckout'
+import { paginaCheckout } from '@pages/paginaCheckout.js'
 
 class comandosComuns {
   validarURl (path) {
@@ -39,10 +39,10 @@ class comandosComuns {
   }
 
   validarMensagemErro (mensagem) {
-    cy.get(paginaCheckout.mensagemErro)
-      .should('be.visible')
-      .and('contain', mensagem)
-  }
+  cy.get(paginaCheckout.elements.mensagemErro)
+    .should('be.visible')
+    .and('contain', mensagem)
+}
 }
 
 export default new comandosComuns()

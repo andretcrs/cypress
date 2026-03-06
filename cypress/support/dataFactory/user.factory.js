@@ -1,11 +1,16 @@
 import { faker } from '@faker-js/faker'
 
 export class userFactory {
-  static gerarDadosDeEntrega () {
+  
+  static gerarDadosDeEntrega (
+    nome = faker.person.firstName(), 
+    sobreNome = faker.person.lastName(), 
+    codigo = faker.location.zipCode('#####')
+  ) {
     return {
-      primeiroNome: faker.person.firstName(),
-      sobreNome: faker.person.lastName(),
-      codigoPostal: faker.location.zipCode('#####')
+      primeiroNome: nome, 
+      sobreNome: sobreNome, 
+      codigoPostal: codigo  
     }
   }
 }

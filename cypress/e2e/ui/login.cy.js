@@ -25,7 +25,7 @@ describe('Login sem sucesso', () => {
   })
  
   it('Deve exibir erro ao enviar campos vazios', () => {
-    cy.login(null, null)
+    cy.login()
     comandosComuns.validarMensagem('Epic sadface: Username is required')
   })
 
