@@ -1,40 +1,40 @@
 import '@shelex/cypress-allure-plugin'
-import { InventoryAction } from '../../support/actions/inventory.action'
-import { CheckoutAction } from '../../support/actions/checkout.action'
-import { UserFactory } from '../../support/dataFactory/user.factory'
-import { cartPage } from '../../support/pages/cart.page'
-import { setupTests } from '../../support/setup'
-import { CartAction } from '../../support/actions/cart.action'
-import ComandosComuns from '../../support/comandosComuns.js'
+import { acaoInventario } from '@actions/acaoInventario.js'
+import { acaoCheckout } from '@actions/acaoCheckout.js'
+import { userFactory } from '@factories/user.factory.js'
+import { paginaCarrinho } from '@pages/paginaCarrinho.js'
+import { setupTests } from '@support/setup.js'
+import { acaoCarrinho } from '@actions/acaoCarrinho'
+import comandosComuns from '@support/comandosComuns.js'
 
-setupTests()
 describe('Fluxo de compra', () => {
-  const Inventory = new InventoryAction()
-  const Checkout = new CheckoutAction()
-  const Carrinho = new CartAction()
+  setupTests()
+  const inventario = new acaoInventario()
+  const checkout = new acaoCheckout()
+  const carrinho = new acaoCarrinho()
 
   it('Deve finalizar compra com sucesso', () => {
-    const user = UserFactory.gerarDadosDeEntrega()
-    Inventory.adicionarProduto()
-    Carrinho.acessarCarrinho()
+    const user = userFactory.gerarDadosDeEntrega()
+    inventario.adicionarProduto()
+    carrinho.acessarCarrinho()
 
-    cy.get(cartPage.BtnCheckout).click()
+    cy.get(paginaCarrinho.BtnCheckout).click()
 
-    Checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
-    Checkout.finalizarCompra()
-    ComandosComuns.validarMensagem("Thank you for your order!")
+    checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
+    checkout.finalizarCompra()
+    comandosComuns.validarMensagem("Thank you for your order!")
     
   })
 
   it('Deve finalizar compra com múltiplos produtos no carrinho', () => {
-    const user = UserFactory.gerarDadosDeEntrega()
+    const user = userFactory.gerarDadosDeEntrega()
 
-    Carrinho.adicionarProdutosAoCarrinho(3)
-    Carrinho.acessarCarrinho()
-    Carrinho.validarQuantidadeCarrinho(3)
-    cy.get(cartPage.BtnCheckout).click()
-    Checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
-    Checkout.finalizarCompra()
-    ComandosComuns.validarMensagem("Thank you for your order!")
+    carrinho.adicionarProdutosAoCarrinho(3)
+    carrinho.acessarCarrinho()
+    carrinho.validarQuantidadeCarrinho(3)
+    cy.get(paginaCarrinho.BtnCheckout).click()
+    checkout.preencherDados(user.primeiroNome, user.sobreNome, user.codigoPostal)
+    checkout.finalizarCompra()
+    comandosComuns.validarMensagem("Thank you for your order!")
   })
 })

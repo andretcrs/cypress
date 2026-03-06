@@ -1,4 +1,4 @@
-export const checkoutPage = {
+export const paginaCheckout = {
   primeiroNome: '[data-test="firstName"]',
   sobreNome: '[data-test="lastName"]',
   codigoPostal: '[data-test="postalCode"]',

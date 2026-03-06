@@ -1,5 +1,5 @@
-import { LoginAction } from './actions/login.action'
-const login = new LoginAction()
+import { loginAction } from '@actions/acaoLogin'
+const login = new loginAction()
 
 Cypress.Commands.add('login', (user, password) => {
   login.acessarLogin()

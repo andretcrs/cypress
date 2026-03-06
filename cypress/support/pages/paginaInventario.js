@@ -1,4 +1,4 @@
-export const inventoryPage = {
+export const paginaInventario = {
 
   itemContainer: '.inventory_item',
   nomeProduto: '[data-test="inventory-item-name"]',

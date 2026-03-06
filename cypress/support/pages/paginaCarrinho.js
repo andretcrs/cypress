@@ -1,4 +1,4 @@
-export const cartPage = {
+export const paginaCarrinho = {
   BtnCheckout: '[data-test="checkout"]',
   BtnRemover: '[data-test^="remove-"]',
   btnRemoverProduto: '[data-test^="add-to-cart"]',

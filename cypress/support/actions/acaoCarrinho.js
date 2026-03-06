@@ -1,17 +1,17 @@
-import { cartPage } from '../pages/cart.page'
-import { inventoryPage } from '../pages/inventory.page'
+import { paginaCarrinho } from '@pages/paginaCarrinho';
+import { paginaInventario } from '@pages/paginaInventario';
 
-export class CartAction {
+export class acaoCarrinho {
   removerProduto () {
-    cy.get(cartPage.BtnRemover).click()
+    cy.get(paginaCarrinho.BtnRemover).click()
   }
 
   clicarCheckout () {
-    cy.get(cartPage.BtnCheckout).click()
+    cy.get(paginaCarrinho.BtnCheckout).click()
   }
 
   adicionarProdutosAoCarrinho (quantidade) {
-    cy.get(cartPage.btnRemoverProduto).each(($el, index) => {
+    cy.get(paginaCarrinho.btnRemoverProduto).each(($el, index) => {
       if (index < quantidade) {
         cy.wrap($el).click()
       }
@@ -20,33 +20,33 @@ export class CartAction {
 
   validarQuantidadeCarrinho (quantidade) {
     if (quantidade === 0 || quantidade === null) {
-      cy.get(cartPage.qtdeItemCarrinho).should('not.exist')
+      cy.get(paginaCarrinho.qtdeItemCarrinho).should('not.exist')
     } else {
-      cy.get(cartPage.qtdeItemCarrinho)
+      cy.get(paginaCarrinho.qtdeItemCarrinho)
         .should('be.visible')
         .and('have.text', quantidade.toString())
     }
   }
 
   validarCarrinhoVazio () {
-    cy.get(cartPage.itemCarrinho).should('not.exist')
+    cy.get(paginaCarrinho.itemCarrinho).should('not.exist')
     this.validarQuantidadeCarrinho(0)
   }
 
   validarNomeProdutoNoCarrinho (nomeEsperado) {
-    cy.get(cartPage.nomeItemCarrinho)
+    cy.get(paginaCarrinho.nomeItemCarrinho)
       .should('be.visible')
       .and('have.text', nomeEsperado)
   }
 
   validarPrecoProdutoNoCarrinho (precoEsperado) {
-    cy.get(cartPage.precoItemCarrinho)
+    cy.get(paginaCarrinho.precoItemCarrinho)
       .should('be.visible')
       .and('have.text', precoEsperado)
   }
 
   executarComValoresCalculados (callback) {
-    cy.get(cartPage.precoItemCarrinho).first().invoke('text').then((textoPreco) => {
+    cy.get(paginaCarrinho.precoItemCarrinho).first().invoke('text').then((textoPreco) => {
       const subtotal = parseFloat(textoPreco.replace('$', ''))
       const imposto = parseFloat((subtotal * 0.08).toFixed(2))
       const totalGeral = (subtotal + imposto).toFixed(2)
@@ -56,6 +56,6 @@ export class CartAction {
   }
 
   acessarCarrinho () {
-    cy.get(inventoryPage.iconeCarrinho).click()
+    cy.get(paginaInventario.iconeCarrinho).click()
   }
 }

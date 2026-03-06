@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-export class UserFactory {
+export class userFactory {
   static gerarDadosDeEntrega () {
     return {
       primeiroNome: faker.person.firstName(),

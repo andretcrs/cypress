@@ -1,6 +1,6 @@
-import { checkoutPage } from './pages/checkout.page'
+import { paginaCheckout } from '@pages/paginaCheckout'
 
-class ComandosComuns {
+class comandosComuns {
   validarURl (path) {
     const baseUrl = Cypress.config('baseUrl')
     cy.url().should('eq', `${baseUrl}${path}`)
@@ -39,10 +39,10 @@ class ComandosComuns {
   }
 
   validarMensagemErro (mensagem) {
-    cy.get(checkoutPage.mensagemErro)
+    cy.get(paginaCheckout.mensagemErro)
       .should('be.visible')
       .and('contain', mensagem)
   }
 }
 
-export default new ComandosComuns()
+export default new comandosComuns()

@@ -1,6 +1,6 @@
-export const setupTests = () => {
+export const setupTests = (options = {}) => {
   beforeEach(() => {
-    if (!Cypress.env('skipLogin')) {
+    if (!options.skipLogin) {
       cy.login(
         Cypress.env('standardUser'),
         Cypress.env('password')

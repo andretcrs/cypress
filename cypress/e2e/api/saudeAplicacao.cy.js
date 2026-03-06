@@ -1,14 +1,7 @@
-/* global cy, it, describe, expect */
 import '@shelex/cypress-allure-plugin'
 
-describe('API & Health Check - SauceDemo', () => {
+describe('Verificar Saúde da aplicação- SauceDemo', () => {
   it('Deve validar se a página inicial está respondendo com status 200', () => {
-    cy.allure()
-      .epic('API')
-      .feature('Health Check')
-      .severity('blocker')
-      .owner('Andre')
-
     cy.request({
       method: 'GET',
       url: '/',
@@ -20,11 +13,6 @@ describe('API & Health Check - SauceDemo', () => {
   })
 
   it('Deve validar o carregamento dos assets principais (manifest e CSS dinâmico)', () => {
-    cy.allure()
-      .epic('API')
-      .feature('Performance')
-      .severity('normal')
-      .owner('Andre')
 
     cy.request('/manifest.json').then((response) => {
       expect(response.status).to.eq(200)
